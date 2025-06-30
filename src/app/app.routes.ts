@@ -6,9 +6,12 @@ import { UsersComponent } from './pages/users/users.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { AdminRoleGuard } from './guards/admin-role.guard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GuestGuard } from './guards/guest.guard';
 import { IRoleType } from './interfaces';
 import { ProfileComponent } from './pages/profile/profile.component';
+
+
 import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 
@@ -55,29 +58,43 @@ export const routes: Routes = [
           showInSidebar: true
         }
       },
-      { 
-        path: 'producto',
-        component: ProductoComponent,
-        canActivate:[AdminRoleGuard],
-        data: { 
-          authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin
-          ],
-          name: 'Producto',
-          showInSidebar: true
-        }
-      },
+
+        { 
+          path: 'producto',
+          component: ProductoComponent,
+          canActivate:[AdminRoleGuard],
+          data: { 
+            authorities: [
+              IRoleType.admin, 
+              IRoleType.superAdmin
+            ],
+            name: 'Producto',
+            showInSidebar: true
+          }
+        },
+        {
+          path: 'categoria',
+          component: CategoriaComponent,
+          canActivate:[AdminRoleGuard],
+          data: { 
+            authorities: [
+              IRoleType.admin, 
+              IRoleType.superAdmin
+            ],
+            name: 'Categoria',
+            showInSidebar: true
+          }
+        },
       {
-        path: 'categoria',
-        component: CategoriaComponent,
-        canActivate:[AdminRoleGuard],
+        path: 'dashboard',
+        component: DashboardComponent,
         data: { 
           authorities: [
             IRoleType.admin, 
-            IRoleType.superAdmin
+            IRoleType.superAdmin,
+            IRoleType.user
           ],
-          name: 'Categoria',
+          name: 'Dashboard',
           showInSidebar: true
         }
       },
