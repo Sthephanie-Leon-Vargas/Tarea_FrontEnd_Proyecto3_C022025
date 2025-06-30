@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="row mb-4">
+    <div>
+      <h2 class="mb-0">Añadir Categorias</h2>
+    </div>
+    <div class="mb-2 col-4">
+      <label class="mb-1" for="nombre">Nombre*</label>
+      <input id="nombre" formControlName="nombre" type="text" class="form-control">
+      @if (form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)) {
+        <p class="text-danger my-1">El nombre es requerido</p>
+      }
+    </div>
+   
+    <div class="mb-2 col-4">
+        <label class="mb-1" for="descripcion">Descripcion*</label>
+        <input id="descripcion" formControlName="descripcion" type="text" class="form-control">
+        @if (form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)) {
+          <p class="text-danger my-1">La descripcion es requerida</p>
+        }
+      </div>
+     
+
+    <div class="col-12">
+      <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary" type="button">Guardar</button>
+    </div>
+  </form>

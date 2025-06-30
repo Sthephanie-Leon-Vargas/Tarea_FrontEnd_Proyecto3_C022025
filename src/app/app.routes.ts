@@ -14,6 +14,8 @@ import { GamesComponent } from './pages/games/games.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
 import { SportTeamComponent } from './pages/sport-team/sport-team.component';
+import { CategoriaComponent } from './pages/categoria/categoria.component';
+import { ProductoComponent } from './pages/producto/producto.component';
 
 export const routes: Routes = [
   {
@@ -58,6 +60,36 @@ export const routes: Routes = [
           showInSidebar: true
         }
       },
+
+      {
+        path: 'categoria',
+        component: CategoriaComponent,
+        canActivate:[AdminRoleGuard],
+        data: { 
+          authorities: [
+            IRoleType.admin, 
+            IRoleType.superAdmin
+          ],
+          name: 'Categoria',
+          showInSidebar: true
+        }
+      },
+
+        { 
+          path: 'producto',
+          component: ProductoComponent,
+          canActivate:[AdminRoleGuard],
+          data: { 
+            authorities: [
+              IRoleType.admin, 
+              IRoleType.superAdmin
+            ],
+            name: 'Producto',
+            showInSidebar: true
+          }
+        },
+  
+
       {
         path: 'dashboard',
         component: DashboardComponent,
@@ -84,7 +116,7 @@ export const routes: Routes = [
           showInSidebar: false
         }
       },
-      {
+    /*  {
         path: 'games',
         component: GamesComponent,
         data: { 
@@ -135,7 +167,7 @@ export const routes: Routes = [
           name: 'Sport Team',
           showInSidebar: true
         }
-      },
+      },*/
     ],
   },
 ];

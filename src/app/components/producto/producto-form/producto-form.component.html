@@ -1,0 +1,59 @@
+<form [formGroup]="form" class="row mb-4">
+    <div>
+      <h2 class="mb-0">Añadir Productos</h2>
+    </div>
+    <div class="mb-2 col-4">
+      <label class="mb-1" for="nombre">Nombre*</label>
+      <input id="nombre" formControlName="nombre" type="text" class="form-control">
+      @if (form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)) {
+        <p class="text-danger my-1">El nombre es requerido</p>
+      }
+    </div>
+   
+    <div class="mb-2 col-4">
+        <label class="mb-1" for="descripcion">Descripcion*</label>
+        <textarea id="descripcion" formControlName="descripcion" type="text" class="form-control"></textarea>
+        @if (form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)) {
+          <p class="text-danger my-1">La descripcion es requerida</p>
+        }
+    </div>
+
+      <div class="mb-2 col-4">
+        <label class="mb-1" for="precio">Precio*</label>
+        <input id="precio" formControlName="precio" type="number" class="form-control">
+        @if (form.controls['precio'].invalid && (form.controls['precio'].dirty || form.controls['precio'].touched)) {
+          <p class="text-danger my-1">El precio es requerido</p>
+        }
+      </div>
+
+      <div class="mb-2 col-4">
+        <label class="mb-1" for="cantidadStock">Cantidad*</label>
+        <input id="cantidadStock" formControlName="cantidadStock" type="number" class="form-control">
+        @if (form.controls['cantidadStock'].invalid && (form.controls['cantidadStock'].dirty || form.controls['cantidadStock'].touched)) {
+          <p class="text-danger my-1">La cantidad es requerida</p>
+        }
+      </div>
+     
+
+
+
+      <div class="mb-2 col-4">
+        <label class="mb-1" for="categoria">Categoría*</label>
+        <select id="categoria" formControlName="categoria" class="form-control">
+          <option [ngValue]="null">Seleccione una categoría</option>
+          @for(cat of categorias; track cat.id) {
+            <option [ngValue]="cat">{{ cat.nombre }}</option>
+          }
+        </select>
+      
+        @if (form.get('categoria')?.invalid && (form.get('categoria')?.touched || form.get('categoria')?.dirty)) {
+          <p class="text-danger my-1">La categoría es requerida</p>
+        }
+      </div>
+      
+
+      
+    <div class="col-12">
+      <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary" type="button">Guardar</button>
+    </div>
+  </form>
