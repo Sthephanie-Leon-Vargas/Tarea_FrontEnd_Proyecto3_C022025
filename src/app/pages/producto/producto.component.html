@@ -5,6 +5,8 @@
     [form]="productoForm"
     (callSaveMethod)="saveProducto($event)"
     [categorias]="categorias"
+    (callUpdateMethod)="updateProducto($event)"
+   
   />
 
 }
@@ -13,6 +15,8 @@
   [pProductoList]="productoService.producto$()"
   (callUpdateModalMethod)="openEditProductoModal($event)"
   (callDeleteMethod)="deleteProducto($event)"
+  [categorias]="categorias"
+ 
 />
 
 <app-pagination
@@ -27,6 +31,8 @@
     <div>
       <app-producto-form
         [form]="productoForm"
+        (callUpdateMethod)="updateProducto($event)"
+        [categorias]="categorias"
         (callUpdateMethod)="updateProducto($event)"
       />
     </div>

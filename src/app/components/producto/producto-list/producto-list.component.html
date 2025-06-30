@@ -1,19 +1,22 @@
+
+
 <div class="producto-container">
-    @for (producto of pProductoList; track producto) {
-      <div class="producto-item">
-        <h2>Producto: {{producto.nombre}}</h2>
-        <h3>Descripción: {{producto.descripcion}}</h3>
-        <p>Precio: {{producto.precio}}</p>
-        <p>Cantidad: {{producto.cantidadStock}}</p>
-        <p>Categoría: {{ producto.categoria?.nombre ?? 'Sin categoría'}}</p>
-       
-       
-        @if (areActionsAvailable) {
-          <button (click)="callUpdateModalMethod.emit(producto)" class="btn btn-success">Actualizar</button>
-          <button  (click)="callDeleteMethod.emit(producto)" class="btn btn-danger">Eliminar</button>
-        }
-      </div>
-    } @empty {
-      <p>No hay productos disponibles</p>
-    }
-  </div>
+  @for (producto of pProductoList; track producto) {
+    <div class="producto-item">
+      <h2>Producto: {{producto.nombre}}</h2>
+      <h3>Descripción: {{producto.descripcion}}</h3>
+      <p>Precio: {{producto.precio}}</p>
+      <p>Cantidad: {{producto.cantidadStock}}</p>
+      <p>Categoría: {{ producto.categoria?.nombre ?? 'Sin categoría'}}</p>
+     
+     
+      @if (areActionsAvailable) {
+        <button (click)="callUpdateModalMethod.emit(producto)" class="btn btn-success">Actualizar</button>
+        <button  (click)="callDeleteMethod.emit(producto)" class="btn btn-danger">Eliminar</button>
+      }
+    </div>
+  } @empty {
+    <p>No hay productos disponibles</p>
+  }
+</div>
+

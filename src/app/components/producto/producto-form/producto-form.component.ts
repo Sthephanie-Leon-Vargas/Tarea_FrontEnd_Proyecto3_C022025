@@ -21,6 +21,11 @@ export class ProductoFormComponent {
   @Output() callUpdateMethod: EventEmitter<IProducto> = new EventEmitter<IProducto>();
   @Input() categorias: ICategoria[] = [];
 
+  compareCategorias(c1: ICategoria, c2: ICategoria): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+  
+
   get categoriaFormGroup(): FormGroup {
     return this.form.get('categoria') as FormGroup;
   }

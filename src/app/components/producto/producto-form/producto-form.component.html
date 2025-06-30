@@ -35,23 +35,24 @@
       </div>
      
 
-
-
       <div class="mb-2 col-4">
         <label class="mb-1" for="categoria">Categoría*</label>
-        <select id="categoria" formControlName="categoria" class="form-control">
-          <option [ngValue]="null">Seleccione una categoría</option>
-          @for(cat of categorias; track cat.id) {
-            <option [ngValue]="cat">{{ cat.nombre }}</option>
-          }
-        </select>
+
+        <select
+        id="categoria"
+        formControlName="categoria"
+        class="form-control"
+        [compareWith]="compareCategorias">
+        <option [ngValue]="null">Seleccione una categoría</option>
+        @for (cat of categorias; track cat.id) {
+          <option [ngValue]="cat">{{ cat.nombre }}</option>
+        }
+      </select>
       
         @if (form.get('categoria')?.invalid && (form.get('categoria')?.touched || form.get('categoria')?.dirty)) {
           <p class="text-danger my-1">La categoría es requerida</p>
         }
       </div>
-      
-
       
     <div class="col-12">
       <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary" type="button">Guardar</button>
