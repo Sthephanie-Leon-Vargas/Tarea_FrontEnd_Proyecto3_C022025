@@ -12,7 +12,7 @@
    
     <div class="mb-2 col-4">
         <label class="mb-1" for="descripcion">Descripcion*</label>
-        <input id="descripcion" formControlName="descripcion" type="text" class="form-control">
+        <textarea id="descripcion" formControlName="descripcion" type="text" class="form-control"> </textarea>
         @if (form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)) {
           <p class="text-danger my-1">La descripcion es requerida</p>
         }

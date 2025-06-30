@@ -6,14 +6,9 @@ import { UsersComponent } from './pages/users/users.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { AdminRoleGuard } from './guards/admin-role.guard';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GuestGuard } from './guards/guest.guard';
 import { IRoleType } from './interfaces';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { GamesComponent } from './pages/games/games.component';
-import { OrdersComponent } from './pages/orders/orders.component';
-import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
-import { SportTeamComponent } from './pages/sport-team/sport-team.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 
@@ -60,7 +55,19 @@ export const routes: Routes = [
           showInSidebar: true
         }
       },
-
+      { 
+        path: 'producto',
+        component: ProductoComponent,
+        canActivate:[AdminRoleGuard],
+        data: { 
+          authorities: [
+            IRoleType.admin, 
+            IRoleType.superAdmin
+          ],
+          name: 'Producto',
+          showInSidebar: true
+        }
+      },
       {
         path: 'categoria',
         component: CategoriaComponent,
@@ -71,35 +78,6 @@ export const routes: Routes = [
             IRoleType.superAdmin
           ],
           name: 'Categoria',
-          showInSidebar: true
-        }
-      },
-
-        { 
-          path: 'producto',
-          component: ProductoComponent,
-          canActivate:[AdminRoleGuard],
-          data: { 
-            authorities: [
-              IRoleType.admin, 
-              IRoleType.superAdmin
-            ],
-            name: 'Producto',
-            showInSidebar: true
-          }
-        },
-  
-
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        data: { 
-          authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
-            IRoleType.user
-          ],
-          name: 'Dashboard',
           showInSidebar: true
         }
       },
@@ -116,58 +94,6 @@ export const routes: Routes = [
           showInSidebar: false
         }
       },
-    /*  {
-        path: 'games',
-        component: GamesComponent,
-        data: { 
-          authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'games',
-          showInSidebar: true
-        }
-      },
-      {
-        path: 'orders',
-        component: OrdersComponent,
-        data: { 
-          authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'orders',
-          showInSidebar: true
-        }
-      },
-      {
-        path: 'preference-list',
-        component: PreferenceListPageComponent,
-        data: { 
-          authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'preference list',
-          showInSidebar: true
-        }
-      },
-      {
-        path: 'sport-team',
-        component: SportTeamComponent,
-        data: { 
-          authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'Sport Team',
-          showInSidebar: true
-        }
-      },*/
     ],
   },
 ];
