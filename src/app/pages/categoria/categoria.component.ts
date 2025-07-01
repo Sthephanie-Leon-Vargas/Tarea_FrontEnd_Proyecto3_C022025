@@ -51,6 +51,7 @@ export class CategoriaComponent {
 
   saveCategoria(item: ICategoria) {
     this.categoriaService.save(item);
+    this.categoriaForm.reset();
   }
 
   updateCategoria(item: ICategoria) {
