@@ -68,7 +68,7 @@ import { ICategoria } from '../interfaces/categoria';
           this.getAll();
         },
         error: (err: any) => {
-          this.alertService.displayAlert('error', 'Ocurrió un error al eliminar una categoria, revisé que esta categoria no tenga productos asociados', 'center', 'top', ['error-snackbar']);
+          this.alertService.displayAlert('error', 'Ocurrió un error al eliminar una categoria, revise que esta categoria no tenga productos asociados', 'center', 'top', ['error-snackbar']);
           console.error('error', err);
         }
       });

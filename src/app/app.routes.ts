@@ -62,11 +62,10 @@ export const routes: Routes = [
         { 
           path: 'producto',
           component: ProductoComponent,
-          canActivate:[AdminRoleGuard],
           data: { 
             authorities: [
-              IRoleType.admin, 
-              IRoleType.superAdmin
+              IRoleType.user, 
+              IRoleType.superAdmin             
             ],
             name: 'Producto',
             showInSidebar: true
@@ -75,10 +74,10 @@ export const routes: Routes = [
         {
           path: 'categoria',
           component: CategoriaComponent,
-          canActivate:[AdminRoleGuard],
+         
           data: { 
             authorities: [
-              IRoleType.admin, 
+              IRoleType.user, 
               IRoleType.superAdmin
             ],
             name: 'Categoria',

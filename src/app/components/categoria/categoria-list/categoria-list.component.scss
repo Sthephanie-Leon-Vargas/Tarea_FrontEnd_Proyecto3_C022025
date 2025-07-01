@@ -1,19 +1,47 @@
 .categoria-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    .categoria-item {
-      border-radius: 20px;
-      box-shadow: 3px 2px 17px 0px rgba(0,0,0,0.15);
-      -webkit-box-shadow: 3px 2px 17px 0px rgba(0,0,0,0.15);
-      -moz-box-shadow: 3px 2px 17px 0px rgba(0,0,0,0.15);
-      padding: 20px;
-      h2 {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
+  margin-top: 2rem;
 
+  h5.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    color: #555;
+   
+  }
+
+  .card {
+    border-radius: 1rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-body {
+      padding: 1.25rem;
     }
   }
-  
+
+  .btn {
+    min-width: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .btn-outline-success {
+    border-radius: 20px;
+  }
+
+  .btn-outline-danger {
+    border-radius: 20px;
+  }
+
+
+}

@@ -1,25 +1,41 @@
-<form [formGroup]="form" class="row mb-4">
-    <div>
-      <h2 class="mb-0">Añadir Categorias</h2>
-    </div>
-    <div class="mb-2 col-4">
-      <label class="mb-1" for="nombre">Nombre*</label>
-      <input id="nombre" formControlName="nombre" type="text" class="form-control">
-      @if (form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)) {
-        <p class="text-danger my-1">El nombre es requerido</p>
-      }
-    </div>
-   
-    <div class="mb-2 col-4">
-        <label class="mb-1" for="descripcion">Descripcion*</label>
-        <textarea id="descripcion" formControlName="descripcion" type="text" class="form-control"> </textarea>
-        @if (form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)) {
-          <p class="text-danger my-1">La descripcion es requerida</p>
-        }
-      </div>
-     
-
+<form [formGroup]="form" class="container p-4 border rounded bg-light shadow-sm" style="max-width: 600px;">
+  <div class="row mb-3">
     <div class="col-12">
-      <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary" type="button">Guardar</button>
+      <h2 class="text-primary text-center">Añadir Categorías</h2>
     </div>
-  </form>
+  </div>
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre*</label>
+    <input
+      id="nombre"
+      formControlName="nombre"
+      type="text"
+      class="form-control"
+      placeholder="Ingrese el nombre de la categoría"
+    />
+    @if (form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)) {
+      <div class="text-danger mt-1">El nombre es requerido</div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción*</label>
+    <textarea
+      id="descripcion"
+      formControlName="descripcion"
+      class="form-control"
+      rows="4"
+      placeholder="Ingrese una descripción"
+    ></textarea>
+    @if (form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)) {
+      <div class="text-danger mt-1">La descripción es requerida</div>
+    }
+  </div>
+
+  <div class="text-end">
+    <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary">
+      Guardar
+    </button>
+  </div>
+</form>

@@ -1,18 +1,79 @@
 .producto-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    .producto-item {
-      border-radius: 20px;
-      box-shadow: 3px 2px 17px 0px rgba(0,0,0,0.15);
-      -webkit-box-shadow: 3px 2px 17px 0px rgba(0,0,0,0.15);
-      -moz-box-shadow: 3px 2px 17px 0px rgba(0,0,0,0.15);
-      padding: 20px;
-      h2 {
-        font-size: 1.5rem;
-        font-weight: bold;
+  margin-top: 2rem;
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #0d6efd;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .table {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    thead {
+      background-color: #0d6efd;
+      color: black;
+
+      th {
+        text-align: center;
+        font-weight: 600;
+        padding: 1rem;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #f2f6fc;
+        }
+
+        td {
+          text-align: center;
+          vertical-align: middle;
+          padding: 0.75rem;
+
+          &:first-child {
+            font-weight: 500;
+          }
+        }
       }
     }
   }
-  
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+
+    &.btn-outline-success {
+      border-color: #198754;
+      color: #198754;
+
+      &:hover {
+        background-color: #198754;
+        color: white;
+      }
+    }
+
+    &.btn-outline-danger {
+      border-color: #dc3545;
+      color: #dc3545;
+
+      &:hover {
+        background-color: #dc3545;
+        color: white;
+      }
+    }
+  }
+
+  .text-muted {
+    font-style: italic;
+    margin-top: 1rem;
+  }
+}

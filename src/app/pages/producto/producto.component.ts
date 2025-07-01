@@ -1,5 +1,5 @@
 import { ModalService } from './../../services/modal.service';
-import { Component, inject, ViewChild } from "@angular/core";
+import { Component, inject, OnInit, ViewChild } from "@angular/core";
 import { PaginationComponent } from "../../components/pagination/pagination.component";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ModalComponent } from '../../components/modal/modal.component';
@@ -26,11 +26,13 @@ import { ChangeDetectorRef } from '@angular/core';
     ModalComponent
   ]
 })
-export class ProductoComponent {
+export class ProductoComponent implements OnInit {
   private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
   public productoList: IProducto[] = []
   public productoService: ProductoService = inject(ProductoService);
   
+  areActionsAvailable=false;
+
   public categoriaService = inject(CategoriaService);//instancia con la categoria
 
   public fb: FormBuilder = inject(FormBuilder);
@@ -40,15 +42,14 @@ export class ProductoComponent {
     descripcion: ['', Validators.required],
     precio: [null, Validators.required],
     cantidadStock: [null, Validators.required],
-   // categoria: this.fb.control<null | ICategoria>(null, Validators.required)
-   categoria: this.fb.control(null, Validators.required)
+    categoria: this.fb.control(null, Validators.required)
 
   });
   public modalService: ModalService = inject(ModalService);
   @ViewChild('editProductoModal') public editProductoModal: any;
 
   public authService: AuthService = inject(AuthService);
-  public areActionsAvailable: boolean = false;
+  
   public route: ActivatedRoute = inject(ActivatedRoute);
 
   public categorias: ICategoria[] = [];
@@ -59,7 +60,7 @@ export class ProductoComponent {
     this.route.data.subscribe( data => {
       this.areActionsAvailable = this.authService.areActionsAvailable(data['authorities'] ? data['authorities'] : []);
     });
-
+    this.areActionsAvailable=this.authService.isSuperAdmin();
     this.categoriaService.getAll();
     
   }

@@ -41,7 +41,7 @@ export class CategoriaComponent {
   ngOnInit(): void {
     this.authService.getUserAuthorities();
     this.route.data.subscribe( data => {
-      this.areActionsAvailable = this.authService.isSuperAdmin();
+      this.areActionsAvailable = this.authService.areActionsAvailable(data['authorities'] ? data['authorities'] : []);
     });
   }
 
